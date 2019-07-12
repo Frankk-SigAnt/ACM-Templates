@@ -1,0 +1,51 @@
+set nocompatible
+
+source $VIMRUNTIME/vimrc_example.vim
+
+syntax on
+
+set number
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set expandtab
+set cindent
+
+colo pablo
+
+set mouse=a
+
+autocmd FileType cpp abbreviate itn int
+autocmd FileType cpp abbreviate cosnt const
+autocmd FileType cpp abbreviate scnaf scanf
+autocmd FileType cpp abbreviate namesapce namespace
+autocmd FileType cpp abbreviate retrun return
+autocmd FileType cpp abbreviate ture true
+autocmd FileType cpp abbreviate flase false
+
+
+imap <C-]> <CR>{<CR>}<C-o>O
+
+map <F2> :call SetUp()<CR>12ggo
+map <F6> :!g++ % -o %<.o -g3 -Wall -Wextra<CR>
+map <F7> :!./%<.o<CR>
+map <F8> :!gdb %<.o<CR>
+
+function SetUp()
+    let l = 0
+    l = l + 1 | call setline(l, '#include <cstdio>')
+    l = l + 1 | call setline(l, '#include <cstring>')
+    l = l + 1 | call setline(l, '#include <algorithm>')
+    l = l + 1 | call setline(l, '')
+    l = l + 1 | call setline(l, '#define clr(x) memset(x, 0, sizeof(x))')
+    l = l + 1 | call setline(l, '#define clrm1(x) memset(x, -1, sizeof(x))')
+    l = l + 1 | call setline(l, '#define clrinf(x) memset(c, 0x3f, sizeof(x))')
+    l = l + 1 | call setline(l, '')
+    l = l + 1 | call setline(l, 'using namespace std;')
+    l = l + 1 | call setline(l, '')
+    l = l + 1 | call setline(l, 'int main()')
+    l = l + 1 | call setline(l, '{')
+    l = l + 1 | call setline(l, '    return 0;')
+    l = l + 1 | call setline(l, '}')
+endfunction
+
