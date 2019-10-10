@@ -9,6 +9,7 @@
 using namespace std;
 
 const int MAXN;
+const int MAXD = 20;
 
 int head[MAXN];
 int nxt[MAXN*2];
@@ -16,7 +17,7 @@ int dest[MAXN*2];
 long long weight[MAXN*2];
 int ecnt = 0;
 
-inline void adde(int u, int v, long long w)
+inline void adde(int u, int v, long long w = 1)
 {
     nxt[ecnt] = head[u];
     head[u] = ecnt;
